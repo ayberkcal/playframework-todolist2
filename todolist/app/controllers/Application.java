@@ -15,7 +15,7 @@ public class Application extends Controller {
 
 	public Result index() {
 		return redirect(routes.Application.tasks());
-
+ 
 		// return ok(index.render("Your new application is ready."));
 	}
 

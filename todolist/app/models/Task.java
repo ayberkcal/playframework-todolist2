@@ -37,40 +37,18 @@ public class Task {
 	public String label;
 
 	public static List<Task> all() {
-		/*EntityManagerFactory entityManagerFactory = Persistence
-				.createEntityManagerFactory("defaultPersistenceUnit");
-		EntityManager entityManager = entityManager = entityManagerFactory.createEntityManager();
-		entityManager.getTransaction().begin();
-		String asd  = Task.class.getName();
-		
-        List<Task> result = entityManager.createQuery( "from task", Task.class ).getResultList();
-        entityManager.getTransaction().commit();
-        entityManager.close();
-        return result;
-        */
-		
-		EntityManagerFactory entityManagerFactory = Persistence
-				.createEntityManagerFactory("defaultPersistenceUnit");
-		EntityManager entityManager = entityManager = entityManagerFactory.createEntityManager();
+		EntityManager entityManager = HibernateUtil.getEntityManager();
 		entityManager.getTransaction().begin();
 		
-		List<Task> students = entityManager.createQuery("from Task").getResultList();
+		List<Task> tasks = entityManager.createQuery("from Task").getResultList();
 		entityManager.close(); 
 		 
-		 return students;
+		 return tasks;
 		
-		/*for ( Task task : result ) {
-			System.out.println( "Event (" + event.getDate() + ") : " + event.getTitle() );
-		}*/
         
 	}
 
 	public static void create(Task task) {
-		
-		 //EntityManagerFactory entityManagerFactory = Persistence
-		//		.createEntityManagerFactory("defaultPersistenceUnit");
-		//EntityManager entityManager = entityManagerFactory
-		//		.createEntityManager();
 		EntityManager entityManager = HibernateUtil.getEntityManager();
 		entityManager.getTransaction().begin();
 		entityManager.persist(task);
