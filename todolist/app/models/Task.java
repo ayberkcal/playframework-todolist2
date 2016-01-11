@@ -20,7 +20,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.annotations.GenericGenerator;
 
 import play.data.validation.Constraints.Required;
-
+ 
 
 @Entity
 @Table(name = "Task")
